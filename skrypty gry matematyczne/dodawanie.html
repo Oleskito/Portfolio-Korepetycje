@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dodawanie</title>
+    <link rel="stylesheet" href="styl.css">
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="math">
+        <h2 id="your-time"></h2>
+        <h1 id="excercise"></h1>
+        <label for="answer">Twoja odpowiedź:</label>
+        <input type="number" id="answer" name="answer">
+      </div>
+      <div id="settings">
+        <p>Poziomy</p>
+        <input type="radio" name="level" value="level1">
+        <label>Poziom 1 </label> <br>
+        <input type="radio" name="level" value="level2" checked>
+      <label>Poziom 2 </label> <br>
+      <input type="radio" name="level" value="level3">
+      <label>Poziom 3 </label> <br>
+      <input type="radio" name="level" value="level4">
+      <label>Poziom 4 </label> <br><br><br>
+      
+      <p>Tryb czasowy</p>
+      <label for="time-mode">Włącz</label>
+      <input type="checkbox" name="time-mode" id="time-mode"><br>
+      <select name="time-chosen" id="time-chosen">
+        <option value="one-minute">1 minuta</option>
+        <option value="two-minutes">2 minuty</option>
+        <option value="five-minutes">5 minut</option>
+      </select><br><br>
+      
+      <button onclick="startGame()">Start</button>
+    </div>
+  </div>
+  
+  <script>
+    let TimerInterval, CounterInterval
+    function startGame(){
+      document.getElementById("math").innerHTML=`<h2 id="your-time"></h2>
+      <h1 id="excercise"></h1>
+      <label for="answer">Twoja odpowiedź:</label>
+      <input type="number" id="answer" name="answer">`
+      document.getElementById("answer").focus();
+      let number1, number2, currentTime, time;
+      let points = 0;
+      let timeMode = document.getElementById("time-mode")
+      const yourTime = document.getElementById("your-time")
+      const level = document.querySelector('input[name="level"]:checked').value;
+      const excercise = document.getElementById("excercise")
+      if (TimerInterval) clearInterval(TimerInterval);
+      if (CounterInterval) clearInterval(CounterInterval);
+      
+
+      
+      if (timeMode.checked == false) {
+        time = 0
+        updateTimer();
+        displayNumbers()
+        
+        TimerInterval = setInterval(updateTimer, 1000);
+        function updateTimer(){
+          let minutes = Math.floor(time / 60)
+          let seconds = time % 60
+          currentTime = `${minutes} : ${seconds}`
+          yourTime.innerText = `Aktualny czas: ${currentTime}`
+          time++
+        }
+        
+      }
+      
+      if (timeMode.checked){
+        let timeChosen = document.getElementById("time-chosen").value;
+        if (timeChosen == "one-minute") time = 10; 
+        if (timeChosen == "two-minutes") time = 120; 
+        if (timeChosen == "five-minutes") time = 300; 
+        updateCounter();
+        displayNumbers()
+
+        CounterInterval = setInterval(updateCounter, 1000);
+        function updateCounter(){
+          if (time < 1){
+            document.getElementById("math").innerHTML=`<h2>Koniec czasu!</h2><h2>Razem masz ${points} punktów`
+          }
+          let minutes = Math.floor(time / 60)
+          let seconds = time % 60
+          console.log(time)
+          if (time > 0) {
+            let timeLeft = `${minutes} : ${seconds}`
+            yourTime.innerText = `Pozostały czas: ${timeLeft}`
+            time--
+          }
+        }
+      }
+      
+      function getRandomInt(range) {
+        return Math.floor(Math.random() * (range + 1));
+      }
+
+    
+      
+      function displayNumbers(){
+          document.getElementById("answer").value = "";
+          if (level == "level1"){
+            number1 = getRandomInt(10)
+            number2 = getRandomInt(10)
+          }
+          if (level == "level2"){
+            number1 = getRandomInt(100)
+            number2 = getRandomInt(100)
+          }
+          if (level == "level3"){
+            number1 = getRandomInt(1000)
+            number2 = getRandomInt(1000)
+          }
+          if (level == "level4"){
+            number1 = getRandomInt(10000)
+            number2 = getRandomInt(10000)
+          }
+          if(!timeMode.checked) excercise.innerHTML = `Twoje punkty: ${points}/10 <br>${number1} + ${number2}`
+          if(timeMode.checked) excercise.innerHTML = `Twoje punkty: ${points} <br>${number1} + ${number2}`
+        }
+        document.removeEventListener("keyup", checkAnswer);
+        document.addEventListener("keyup", checkAnswer)
+        function checkAnswer(){
+         let yourAnswer = document.getElementById("answer").value
+         let correctAnswer = number1 + number2
+         if (yourAnswer == correctAnswer){
+          points++;
+          displayNumbers();
+          if (!timeMode.checked && points == 10){
+            clearInterval(CounterInterval);
+            document.getElementById("math").innerHTML=`<h2>Twój czas to: ${currentTime}</h2>`
+          }
+          } 
+        }
+
+    }
+  </script>
+</body>
+</html>

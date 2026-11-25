@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <title>Matemagia - Level Up</title>
+</head>
+<body>
+  <section id="menu">
+  <div id="menu_lewe">
+  <img src="../icon transparent.png" alt="icon-transparent">
+  <a href="../index.html#">Matemagia</a>
+  </div>
+  <div id="hamburger_menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="menu_prawe">
+    <a href="../index.html#o_mnie_blok_glowny">O mnie</a>
+    <a href="../index.html#cennik_blok_glowny">Cennik</a>
+    <a href="levelup.html">Level Up</a>
+    <a href="../index.html#kontakt_blok_glowny">Zapisz się</a>
+  </div>
+</section>
+
+<section id="blok_glowny">
+  <section id="blok_zakladek">
+    <div class="zakladka_kategorii" id="dla_wszystkich">
+      <a>Dla wszystkich</a>
+    </div>
+    <div class="zakladka_gry_nieparzyste ">
+      <a href="#">Dodawanie, odejmowanie, mnożenie i dzielenie</a>
+    </div>
+    <div class="zakladka_gry_parzyste">
+      <a href="podstawy ulamkow zwyklych.html">Podstawy ułamków zwykłych</a>
+    </div>
+    <div class="zakladka_gry_nieparzyste">
+      <a href="dodawanie i odejmowanie ulamkow.html">Ułamki zwykłe - Dodawanie i odejmowanie</a>
+    </div>
+    <div class="zakladka_gry_parzyste">
+      <a href="mnozenie i dzielenie ulamkow.html">Ułamki zwykłe - Mnożenie i dzielenie</a>
+    </div>
+    <div class="zakladka_kategorii" id="szkola_srednia">
+      <a>Szkoła średnia</a>
+    </div>
+  </section>
+  <section id="blok_prawy">
+    <h2>Dodawanie, odejmowanie, mnożenie, dzielenie</h2>
+    <section id="blok_gry">
+      <section id="blok_dzialania">
+        <div class="tryb_gry aktywny" id="dodawanie">
+          <h3>Dodawanie</h3>
+          <div class="blok_wyboru_poziomu">
+            <label for="poziom_dodawanie">Poziom:</label>
+            <select name="poziom_dodawanie" id="poziom_dodawanie">
+              <option value="latwy">Łatwy</option>
+              <option value="normalny" selected>Normalny</option>
+              <option value="sredni">Średni</option>
+              <option value="trudny">Trudny</option>
+              <option value="bardzo_trudny">Bardzo Trudny</option>
+            </select>
+          </div>
+        </div>
+        <div class="tryb_gry aktywny" id="odejmowanie">
+          <h3>Odejmowanie</h3>
+            <div class="blok_wyboru_poziomu">
+            <label for="poziom_odejmowanie">Poziom:</label>
+            <select name="poziom_odejmowanie" id="poziom_odejmowanie">
+              <option value="latwy">Łatwy</option>
+              <option value="normalny" selected>Normalny</option>
+              <option value="sredni">Średni</option>
+              <option value="trudny">Trudny</option>
+              <option value="bardzo_trudny">Bardzo Trudny</option>
+            </select>
+          </div>
+        </div>
+        <div class="tryb_gry aktywny" id="mnozenie">
+          <h3>Mnożenie</h3>
+            <div class="blok_wyboru_poziomu">
+            <label for="poziom_mnozenie">Poziom:</label>
+            <select name="poziom_mnozenie" id="poziom_mnozenie">
+              <option value="latwy">Łatwy</option>
+              <option value="normalny" selected>Normalny</option>
+              <option value="sredni">Średni</option>
+              <option value="trudny">Trudny</option>
+              <option value="bardzo_trudny">Bardzo Trudny</option>
+            </select>
+          </div>
+        </div>
+        <div class="tryb_gry aktywny" id="dzielenie">
+          <h3>Dzielenie</h3>
+            <div class="blok_wyboru_poziomu">
+            <label for="poziom_dzielenie">Poziom:</label>
+            <select name="poziom_dzielenie" id="poziom_dzielenie">
+              <option value="latwy">Łatwy</option>
+              <option value="normalny" selected>Normalny</option>
+              <option value="sredni">Średni</option>
+              <option value="trudny">Trudny</option>
+              <option value="bardzo_trudny">Bardzo Trudny</option>
+            </select>
+          </div>
+        </div>
+        
+        <section id="blok_wyswietlone_zadanie">
+          <h3>Twoje działanie:</h3>
+          <p id="dzialanie_wyswietlone"></p>
+          <label for="pole_odpowiedzi">Twoja odpowiedź: </label>
+          <input type="number" name="pole_odpowiedzi" id="pole_odpowiedzi">
+          <p id="punkty_tekst"></p>
+          <p id="czas_tekst"></p>
+        </section>
+
+      </section>
+      <section id="blok_ustawien">
+        <div id="klawisze_gorne_pad_border">
+          <div id="klawisze_gorne_pad"></div>
+        </div>
+        <div id="ustawienia">
+          <label for="liczby_ujemne">Liczby ujemne</label>
+          <input type="checkbox" name="liczby_ujemne" id="liczby_ujemne"><br>
+          <label for="tryb_czasowy">Tryb czasowy</label>
+          <input type="checkbox" name="tryb_czasowy" id="tryb_czasowy"><br>
+          <button id="przycisk_start" onclick="start_gry()">START</button>
+          <button id="przycisk_stop" onclick="stop_gry('reset')">STOP</button>
+        </div>
+        <div>
+          <div id="klawisze_dolne_pad_border">
+            <div id="klawisze_dolne_pad"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <h2 id="statystyki"></h2>
+  </section>
+</section>
+
+<script>
+  document.body.addEventListener("click", (event)=>{
+    if(event.target.classList.contains("aktywny")){
+      event.target.classList.remove("aktywny");
+      event.target.classList.add("nieaktywny");
+    }
+    else if(event.target.classList.contains("nieaktywny")){
+      event.target.classList.remove("nieaktywny");
+      event.target.classList.add("aktywny");
+    }
+  })
+
+  let tryb_czasowy_interval, tryb_standardowy_interval, punkty, skonwertowany_czas;
+  
+  function start_gry(){
+    
+    let wybrane_operacje = []
+    Array.from(document.getElementsByClassName("aktywny")).forEach((element) =>{
+      if (element.id === "dodawanie") wybrane_operacje.push("dodawanie");
+      else if (element.id === "odejmowanie") wybrane_operacje.push("odejmowanie");
+      else if (element.id === "mnozenie") wybrane_operacje.push("mnozenie");
+      else if (element.id === "dzielenie") wybrane_operacje.push("dzielenie");
+    })
+    if(wybrane_operacje.length == 0) {
+      alert("Wybierz chociaż jedną kategorię!");
+      return;
+    }
+
+    document.getElementById("przycisk_stop").style.display = "inline"
+    document.getElementById("przycisk_start").style.display = "none"
+    Array.from(document.getElementsByClassName("tryb_gry")).forEach((element) =>{
+      element.style.display = "none"
+    })
+    document.getElementById("blok_wyswietlone_zadanie").style.display = "inline"
+    document.getElementById("pole_odpowiedzi").focus();
+    
+    let pierwsza_liczba, druga_liczba, wynik, czas;
+    clearInterval(tryb_czasowy_interval);
+    clearInterval(tryb_standardowy_interval);
+    losuj_wynik()
+    punkty = 0
+
+    function losuj_wynik(){
+      let wylosowana_operacje = wybrane_operacje[Math.floor(Math.random()*wybrane_operacje.length)]
+      console.log(wylosowana_operacje)
+
+      let poziom_trudnosci, operacja, zakres, operacja_tekst;
+      let liczby_ujemne = document.getElementById("liczby_ujemne").checked;
+
+      const wszystkie_operacje = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+        '*': (a, b) => a * b,
+        '/': (a, b) => a / b,
+      };
+
+      switch (wylosowana_operacje){
+        case "dodawanie": 
+          poziom_trudnosci = document.getElementById("poziom_dodawanie").value;
+          operacja = "+"
+          operacja_tekst = "+"
+          break;
+        case "odejmowanie": 
+          poziom_trudnosci = document.getElementById("poziom_odejmowanie").value;
+          operacja = "-"
+          operacja_tekst = "-"
+          break;
+        case "mnozenie": 
+          poziom_trudnosci = document.getElementById("poziom_mnozenie").value;
+          operacja = "*"
+          operacja_tekst = "×"
+          break;
+        case "dzielenie": 
+          poziom_trudnosci = document.getElementById("poziom_dzielenie").value;
+          operacja = "/"
+          operacja_tekst = ":"
+          break;
+        }
+        console.log(poziom_trudnosci)
+
+      switch (poziom_trudnosci){
+        case "latwy":
+          zakres = 10;
+          if (operacja == "*") zakres = 10;
+          if (operacja == "/") zakres = 50;
+          break;
+        case "normalny":
+          zakres = 50;
+          if (operacja == "*") zakres = 10;
+          if (operacja == "/") zakres = 100;
+          break;
+        case "sredni":
+          zakres = 100;
+          if (operacja == "*") zakres = 50;
+          if (operacja == "/") zakres = 200;
+          break;
+        case "trudny":
+          if (operacja == "+") zakres = 1000;
+          if (operacja == "-") zakres = 500;
+          if (operacja == "*") zakres = 50;
+          if (operacja == "/") zakres = 400;
+          break;
+        case "bardzo_trudny":
+          if (operacja == "+") zakres = 10000;
+          if (operacja == "-") zakres = 5000;
+          if (operacja == "*") zakres = 100;
+          if (operacja == "/") zakres = 750;
+          break;
+      }
+
+      function losuj_liczby(zakres){
+          document.getElementById("pole_odpowiedzi").value = "";
+          let liczba; 
+          if (!liczby_ujemne) liczba = Math.floor(Math.random() * (zakres + 1));
+          else liczba = Math.floor(Math.random() * (2 * zakres + 1) - zakres);
+          return liczba;
+        }
+        pierwsza_liczba = losuj_liczby(zakres)
+        druga_liczba = losuj_liczby(zakres)
+
+        // Validation of operations:
+        //addition
+
+        // subtraction
+        if(operacja == "-" && !liczby_ujemne){
+          if (poziom_trudnosci)
+          while (pierwsza_liczba < druga_liczba) {
+            pierwsza_liczba = losuj_liczby(zakres)
+            druga_liczba = losuj_liczby(zakres)
+          }
+        }
+        // multiplication
+        if(operacja == "*"){
+          do{
+            pierwsza_liczba = losuj_liczby(zakres)
+            druga_liczba = losuj_liczby(zakres)
+          }
+          while (
+            (poziom_trudnosci == "latwy" && Math.abs(pierwsza_liczba * druga_liczba) >50 ) ||
+            (poziom_trudnosci == "normalny" && Math.abs(pierwsza_liczba * druga_liczba) < 20 ) ||
+            (poziom_trudnosci == "sredni" && (Math.abs(pierwsza_liczba * druga_liczba) > 1000 || (pierwsza_liczba * druga_liczba) < 100)) ||
+            (poziom_trudnosci == "trudny" &&  Math.abs(pierwsza_liczba * druga_liczba) < 1000) ||
+            (poziom_trudnosci == "bardzo_trudny" && Math.abs(pierwsza_liczba * druga_liczba) < 2000 )
+          )
+        }
+
+        // division
+        if(operacja == "/"){
+          do{
+            pierwsza_liczba = losuj_liczby(zakres)
+            druga_liczba = losuj_liczby(zakres)
+          }
+          while (
+            pierwsza_liczba == 0 ||
+            druga_liczba == 0 ||
+            pierwsza_liczba % druga_liczba != 0 ||
+            (poziom_trudnosci=="latwy" && (pierwsza_liczba / druga_liczba > 10)) ||
+            (poziom_trudnosci=="normalny" && (pierwsza_liczba < 11 || druga_liczba >50 || druga_liczba < 2)) ||
+            (poziom_trudnosci=="sredni" && (pierwsza_liczba < 100 || druga_liczba >100 || druga_liczba < 2)) ||
+            (poziom_trudnosci=="trudny" && (pierwsza_liczba < 200 || druga_liczba >200 || druga_liczba < 4)) ||
+            (poziom_trudnosci=="bardzo_trudny" && (pierwsza_liczba < 400 || druga_liczba >375 || druga_liczba < 4))
+          )
+        }
+        
+        wynik = wszystkie_operacje[operacja](pierwsza_liczba, druga_liczba)
+        console.log(pierwsza_liczba, operacja, druga_liczba, "=",wynik)
+
+        let pierwsza_liczba_tekst = pierwsza_liczba
+        let druga_liczba_tekst = druga_liczba
+        if (druga_liczba < 0 ) druga_liczba_tekst = `(${druga_liczba})`
+        
+        let dzialanie_wyswietlone = `${pierwsza_liczba_tekst} ${operacja_tekst} ${druga_liczba_tekst}`
+        document.getElementById("dzialanie_wyswietlone").innerText = dzialanie_wyswietlone
+    }
+
+
+      let tryb_czasowy = document.getElementById("tryb_czasowy").checked
+      let punkty_tekst = document.getElementById("punkty_tekst")
+      let czas_tekst_blok = document.getElementById("czas_tekst")
+      let czas_tekst;
+      
+      if (!tryb_czasowy){
+        punkty_tekst.innerText = `Masz 0/10 punktów`;
+        czas = 0;
+        aktualizuj_czas_tryb_standardowy()
+        tryb_standardowy_interval = setInterval(aktualizuj_czas_tryb_standardowy, 1000)
+        
+        function aktualizuj_czas_tryb_standardowy(){
+          let minuty = Math.floor(czas/60);
+          let sekundy = czas % 60
+          if (sekundy < 10) sekundy = `0${sekundy}`
+          skonwertowany_czas = `${minuty}:${sekundy}`
+          czas_tekst = `Twój czas: ${skonwertowany_czas}`
+          czas++
+          czas_tekst_blok.innerText = czas_tekst
+        }
+      }
+      
+      if (tryb_czasowy){
+        punkty_tekst.innerText = `Twoje punkty: 0`;
+        czas = 150;
+        aktualizuj_czas_tryb_czasowy()
+        tryb_czasowy_interval = setInterval(aktualizuj_czas_tryb_czasowy, 1000);
+
+        function aktualizuj_czas_tryb_czasowy(){
+          if (czas==0){
+            stop_gry('tryb_czasowy')
+          }
+          let minuty = Math.floor(czas/60);
+          let sekundy = czas % 60
+          if (sekundy < 10) sekundy = `0${sekundy}`
+          skonwertowany_czas = `${minuty}:${sekundy}`
+          czas_tekst = `Pozostało: ${skonwertowany_czas}`
+          czas--
+          czas_tekst_blok.innerText = czas_tekst
+        }
+      }
+
+      document.removeEventListener("keyup", sprawdz_odpowiedz)
+      document.addEventListener("keyup", sprawdz_odpowiedz)
+      function sprawdz_odpowiedz(){
+        let pole_odpowiedzi = document.getElementById("pole_odpowiedzi").value
+        if (pole_odpowiedzi == wynik){
+          punkty++
+          if(!tryb_czasowy){
+            punkty_tekst.innerText = `Masz ${punkty}/10 punktów`
+            if (punkty == 10){
+              stop_gry('tryb_standardowy')
+            }
+          }
+          if (tryb_czasowy){
+            punkty_tekst.innerText = `Twoje punkty: ${punkty}`
+            if (czas==0){
+              stop_gry('tryb_czasowy')
+            }
+          }
+          losuj_wynik();
+        }
+      }
+  }
+
+  function stop_gry(gameMode){
+      clearInterval(tryb_czasowy_interval);
+      clearInterval(tryb_standardowy_interval);
+      document.getElementById("przycisk_stop").style.display = "none"
+      document.getElementById("przycisk_start").style.display = "inline"
+      Array.from(document.getElementsByClassName("tryb_gry")).forEach((element) =>{
+        element.style.display = "inline"
+      })
+      document.getElementById("blok_wyswietlone_zadanie").style.display = "none"
+
+      let statystyki = document.getElementById("statystyki")
+      console.log(punkty, skonwertowany_czas)
+
+      if(gameMode == "tryb_czasowy"){
+        statystyki.innerText = `W trybie czasowym zdobyłeś: ${punkty} punktów.` 
+      }
+      if(gameMode == "tryb_standardowy"){
+        statystyki.innerText = `W trybie standardowym zdobyłeś ${punkty} punktów, w czasie ${skonwertowany_czas}`
+      }
+      if(gameMode == "reset"){
+        statystyki.innerText = `Zatrzymałeś grę i zdobyłeś: ${punkty} punktów`
+      }
+      
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+<!-- DZIELENIE DO POPRAWIENIA!! -->

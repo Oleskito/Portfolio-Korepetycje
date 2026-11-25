@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <title>Matemagia - Level Up</title>
+</head>
+<body>
+  <section id="menu">
+  <div id="menu_lewe">
+  <img src="../icon transparent.png" alt="icon-transparent">
+  <a href="../index.html#">Matemagia</a>
+  </div>
+  <div id="hamburger_menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="menu_prawe">
+    <a href="../index.html#o_mnie_blok_glowny">O mnie</a>
+    <a href="../index.html#cennik_blok_glowny">Cennik</a>
+    <a href="levelup.html">Level Up</a>
+    <a href="../index.html#kontakt_blok_glowny">Zapisz się</a>
+  </div>
+</section>
+
+<section id="blok_glowny">
+  <section id="blok_zakladek">
+    <div class="zakladka_kategorii" id="dla_wszystkich">
+      <a>Dla wszystkich</a>
+    </div>
+    <div class="zakladka_gry_nieparzyste ">
+      <a href="podstawowe dzialania.html">Dodawanie, odejmowanie, mnożenie i dzielenie</a>
+    </div>
+    <div class="zakladka_gry_parzyste">
+      <a href="podstawy ulamkow zwyklych.html">Podstawy ułamków zwykłych</a>
+    </div>
+    <div class="zakladka_gry_nieparzyste">
+      <a href="dodawanie i odejmowanie ulamkow.html">Ułamki zwykłe - Dodawanie i odejmowanie</a>
+    </div>
+    <div class="zakladka_gry_parzyste">
+      <a href="mnozenie i dzielenie ulamkow.html">Ułamki zwykłe - Mnożenie i dzielenie</a>
+    </div>
+    <div class="zakladka_kategorii" id="szkola_srednia">
+      <a>Szkoła średnia</a>
+    </div>
+  </section>
+  <section id="blok_prawy">
+    <h2>Podstawy ułamków zwykłych</h2>
+    <p id="porada">Poza trybem "skracanie", wyniku nie trzeba skracać!</p>
+    <section id="blok_gry">
+      <section id="blok_dzialania">
+        <div class="tryb_gry aktywny" id="expanding">
+          <h4>Rozszerzanie</h4>
+            <div class="blok_wyboru_poziomu">
+            <label for="difficultyExpanding">Poziom:</label>
+            <select name="difficultyExpanding" id="difficultyExpanding">
+              <option value="easy">Łatwy</option>
+              <option value="normal" selected>Normalny</option>
+            </select>
+          </div>
+        </div>
+        <div class="tryb_gry aktywny" id="simplifying">
+          <h4>Skracanie</h4>
+            <div class="blok_wyboru_poziomu">
+            <label for="difficultySimplifying">Poziom:</label>
+            <select name="difficultySimplifying" id="difficultySimplifying">
+              <option value="easy">Łatwy</option>
+              <option value="normal" selected>Normalny</option>
+            </select>
+          </div>
+        </div>
+        <div class="tryb_gry aktywny" id="improperFraction">
+          <h4>Wyciąganie całości z ułamka</h4>
+          <div class="blok_wyboru_poziomu">
+            <label for="difficultyImproperFraction">Poziom:</label>
+            <select name="difficultyImproperFraction" id="difficultyImproperFraction">
+              <option value="easy">Łatwy</option>
+              <option value="normal" selected>Normalny</option>
+            </select>
+          </div>
+        </div>
+        <div class="tryb_gry aktywny" id="mixedNumber">
+          <h4>Zamiana na ułamek niewłaściwy</h4>
+            <div class="blok_wyboru_poziomu">
+            <label for="difficultyMixedNumber">Poziom:</label>
+            <select name="difficultyMixedNumber" id="difficultyMixedNumber">
+              <option value="easy">Łatwy</option>
+              <option value="normal" selected>Normalny</option>
+            </select>
+          </div>
+        </div>
+        
+        <section id="blok_wyswietlone_zadanie">
+          <p id="chosenGameModeText">ffff</p>
+          <h3>Twoje działanie:</h3>
+          <div id="TaskDisplayedBlockBasics">
+            <div id="firstFillerBlock"></div>
+            <div id="wholePartBlock"></div>
+            <div class="fractionBlock">
+              <div id="Numerator"></div>
+              <div class="fractionLine"></div>
+              <div id="Denominator"></div>
+            </div>
+            <div id="equalsBlock">=</div>
+            <div id="resultWholePartBlockBasics">
+              <input type="number" id="wholePartInput">
+            </div>
+            <div class="fractionBlock">
+              <div id="resultNumerator"> <input type="number" id="numeratorInput"> </div>
+              <div class="fractionLine"></div>
+              <div id="resultDenominator"> <input type="number" id="denominatorInput"> </div>
+            </div>
+            <div id="secondFillerBlock"></div>
+          </div>
+          <p id="pointsText"></p>
+          <p id="timeTextBlock"></p>
+        </section>
+
+      </section>
+      <section id="blok_ustawien">
+        <div id="klawisze_gorne_pad_border">
+          <div id="klawisze_gorne_pad"></div>
+        </div>
+        <div id="ustawienia">
+          <label for="timeMode">Tryb czasowy</label>
+          <input type="checkbox" name="timeMode" id="timeMode"><br>
+          <button id="przycisk_start" onclick="startGame()">START</button>
+          <button id="przycisk_stop" onclick="stopGame('reset')">STOP</button>
+        </div>
+        <div>
+          <div id="klawisze_dolne_pad_border">
+            <div id="klawisze_dolne_pad"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <h2 id="stats"></h2>
+  </section>
+</section>
+<script>
+    
+  document.body.addEventListener("click", (event)=>{
+    if(event.target.classList.contains("aktywny")){
+      event.target.classList.remove("aktywny");
+      event.target.classList.add("nieaktywny");
+    }
+    else if(event.target.classList.contains("nieaktywny")){
+      event.target.classList.remove("nieaktywny");
+      event.target.classList.add("aktywny");
+    }
+  })
+  
+  let difficulty, xRange, yRange, aRange, x, y, a, gameMode, timeMode, time, timeModeInterval, defaultModeInterval, convertedTime;
+  let WholePart, Numerator, Denominator;
+  let chosenDivider, chosenMultiplier;
+  let dividers = [];
+  let WholePartResult, NumeratorResult, DenominatorResult;
+  
+  document.removeEventListener("keyup", checkAnswer);
+  document.addEventListener("keyup", checkAnswer);
+  let points = 0;
+  let pointsText = document.getElementById("pointsText")
+  let timeTextBlock = document.getElementById("timeTextBlock")
+  
+  let excludedNumbers = [7, 11,13]
+  let allActive;
+  
+  
+  
+  function startGame(){
+    allActive = [];
+    Array.from(document.getElementsByClassName("aktywny")).forEach((element)=>{
+      if(element.id === "expanding") allActive.push("expanding")
+      else if(element.id === "simplifying") allActive.push("simplifying")
+      else if(element.id === "improperFraction") allActive.push("improperFraction")
+      else if(element.id === "mixedNumber") allActive.push("mixedNumber")
+    })
+    
+    if(allActive.length == 0) {
+      alert("Wybierz chociaż jedną kategorię!")
+      return;
+    }
+    
+    document.getElementById("przycisk_stop").style.display = "inline"
+    document.getElementById("przycisk_start").style.display = "none"
+    Array.from(document.getElementsByClassName("tryb_gry")).forEach((element) =>{
+      element.style.display = "none"
+    })
+    document.getElementById("blok_wyswietlone_zadanie").style.display = "inline"
+    points = 0
+    
+    timeMode = document.getElementById("timeMode").checked;
+    
+    let timeText;
+    clearInterval(timeModeInterval);
+    clearInterval(defaultModeInterval);
+
+    if (!timeMode){
+        pointsText.innerText = `Masz 0/10 punktów`;
+        time = 0;
+        updateDefaultMode()
+        defaultModeInterval = setInterval(updateDefaultMode, 1000)
+        
+        function updateDefaultMode(){
+          let minutes = Math.floor(time/60);
+          let seconds = time % 60
+          if (seconds < 10) seconds = `0${seconds}`
+          convertedTime = `${minutes}:${seconds}`
+          timeText = `Twój czas: ${convertedTime}`
+          time++
+          timeTextBlock.innerText = timeText
+        }
+      }
+      
+      if (timeMode){
+        pointsText.innerText = `Twoje punkty: 0`;
+        time = 150;
+        updateTimeMode()
+        timeModeInterval = setInterval(updateTimeMode, 1000);
+
+        function updateTimeMode(){
+          if (time==0){
+            stopGame('timeMode')
+          }
+          let minutes = Math.floor(time/60);
+          let seconds = time % 60
+          if (seconds < 10) seconds = `0${seconds}`
+          convertedTime = `${minutes}:${seconds}`
+          timeText = `Pozostało: ${convertedTime}`
+          time--
+          timeTextBlock.innerText = timeText
+        }
+      }
+
+    getExcercise()
+  }
+function getNumber(range){
+  let number = Math.floor(Math.random() * range + 1)
+  return number
+}
+function getExcercise(){
+  document.getElementById("resultWholePartBlockBasics").style.display = "none"
+  document.getElementById("wholePartBlock").style.display = "none"
+  document.getElementById("wholePartInput").value = ""
+  document.getElementById("numeratorInput").value = ""
+  document.getElementById("denominatorInput").value = ""
+  document.getElementById("firstFillerBlock").style.display = "none"
+  document.getElementById("secondFillerBlock").style.display = "none"
+
+  gameMode = allActive[Math.floor(Math.random() * allActive.length)]
+  if (gameMode =="expanding") {
+    difficulty = document.getElementById("difficultyExpanding").value
+    document.getElementById("firstFillerBlock").style.display = "block"
+    document.getElementById("secondFillerBlock").style.display = "block"
+  }
+  if (gameMode =="simplifying") {
+    difficulty = document.getElementById("difficultySimplifying").value
+    document.getElementById("firstFillerBlock").style.display = "block"
+    document.getElementById("secondFillerBlock").style.display = "block"
+  }
+  if (gameMode =="improperFraction") {
+    difficulty = document.getElementById("difficultyImproperFraction").value
+    document.getElementById("resultWholePartBlockBasics").style.display = "flex"
+
+  }
+  if (gameMode =="mixedNumber") {
+    difficulty = document.getElementById("difficultyMixedNumber").value
+    document.getElementById("wholePartBlock").style.display = "flex"
+
+  }
+
+  console.log(allActive, gameMode)
+
+  switch(gameMode){
+    case "expanding":
+    if(difficulty=="easy") {
+      yRange = 8
+      chosenMultiplier = getNumber(5) + 1
+    } else {
+      yRange = 15
+      chosenMultiplier = getNumber(10) + 1
+    }
+      break
+    case "simplifying":
+      if(difficulty == "easy") yRange = 15
+      else yRange = 50
+      break
+    case "improperFraction":
+      if(difficulty == "easy") {
+        xRange = 15
+        yRange = 5
+      } else {
+        xRange = 35
+        yRange = 15
+      }
+      break
+    case "mixedNumber":
+      if(difficulty == "easy"){
+        aRange = 5
+        yRange = 5
+      } else {     
+        aRange = 10
+        yRange = 10
+      }
+      break
+  }
+
+  if(gameMode == "mixedNumber") a = getNumber(aRange)
+  y = getNumber(yRange) + 1
+
+  if (gameMode == "expanding" || gameMode == "simplifying" || gameMode == "mixedNumber"){
+    xRange = y - 1
+  }
+  x = getNumber(xRange)
+  if(gameMode == "improperFraction"){
+    while(x < y){
+      x = getNumber(xRange)
+      y = getNumber(yRange)
+    }
+  }
+
+  dividers = []
+  if(gameMode == "simplifying"){
+    while (dividers.length == 0){
+      x = getNumber(xRange)
+      y = getNumber(yRange)
+      for(let i = y; i > 1; i--){
+        if(x%i == 0 && y%i == 0)  dividers.push(i)
+      }
+    }
+  }
+  chosenDivider = dividers[Math.floor(Math.random() * dividers.length)]
+  let drawnNumbers = [a, x, y]
+  getResult(drawnNumbers)
+} 
+
+function getResult(drawnNumbers){
+  WholePart = drawnNumbers[0];
+  Numerator = drawnNumbers[1];
+  Denominator = drawnNumbers[2];
+
+  if (gameMode == "expanding") {
+    NumeratorResult = Numerator * chosenMultiplier
+    DenominatorResult = Denominator * chosenMultiplier
+    WholePartResult = 0
+    document.getElementById("chosenGameModeText").innerText = "Rozszerzanie"
+  } else if(gameMode == "simplifying") {
+    NumeratorResult = Numerator / chosenDivider
+    DenominatorResult = Denominator / chosenDivider
+    WholePartResult = 0
+    document.getElementById("chosenGameModeText").innerText = "Skracanie"
+  } else if(gameMode == "improperFraction"){
+    DenominatorResult = Denominator
+    NumeratorResult = Numerator % Denominator
+    WholePartResult = Math.floor(Numerator / Denominator)
+    if (NumeratorResult==0) DenominatorResult = 0
+    document.getElementById("chosenGameModeText").innerText = "Wyciąganie całości z ułamka"
+  } else if(gameMode == "mixedNumber"){
+    DenominatorResult = Denominator
+    WholePartResult = 0
+    NumeratorResult = WholePart * Denominator + Numerator
+    document.getElementById("chosenGameModeText").innerText = "Zamiana na ułamek niewłaściwy"
+  }
+
+  // WYSWIETLANIE ZADANIA
+  document.getElementById("wholePartBlock").innerText = `${WholePart}`
+  document.getElementById("Numerator").innerText = `${Numerator}`
+  document.getElementById("Denominator").innerText = `${Denominator}`
+
+  if(gameMode == "expanding" || gameMode == "simplifying"){
+    let displayFraction = Math.floor(Math.random() * 2 + 1)
+    if(displayFraction == 1) document.getElementById("numeratorInput").value = `${NumeratorResult}`
+    else if(displayFraction == 2) document.getElementById("denominatorInput").value = `${DenominatorResult}`
+  }
+
+  function focusFirstEmptyInput() {
+    const allInputs = Array.from(document.querySelectorAll("input"));
+    for (let input of allInputs){
+      if (input.value == 0 && getComputedStyle(input.parentElement)["display"] != "none"){
+        input.focus();
+        return
+      }
+    }
+  }
+  focusFirstEmptyInput()
+  
+}
+function checkAnswer(){
+  let wholePartInput = Number(document.getElementById("wholePartInput").value)
+  let numeratorInput = Number(document.getElementById("numeratorInput").value)
+  let denominatorInput = Number(document.getElementById("denominatorInput").value)
+  console.log(WholePartResult, NumeratorResult, DenominatorResult)
+  
+  if (wholePartInput === WholePartResult && numeratorInput === NumeratorResult && denominatorInput === DenominatorResult){
+    points ++;
+    if(!timeMode){
+      pointsText.innerText = `Dobra odpowiedź, masz ${points}/10 punktów`;
+      if (points == 10){
+        stopGame('defaultMode')
+      } 
+    }
+    if (timeMode){
+      pointsText.innerText = `Dobra odpowiedź. Twoje punkty: ${points}`;
+    }
+    document.activeElement.blur();
+    getExcercise();
+  }
+  
+}
+
+
+
+function stopGame(modeOfTime){
+      clearInterval(timeModeInterval);
+      clearInterval(defaultModeInterval);
+      document.getElementById("przycisk_stop").style.display = "none"
+      document.getElementById("przycisk_start").style.display = "inline"
+      Array.from(document.getElementsByClassName("tryb_gry")).forEach((element) =>{
+        element.style.display = "inline"
+      })
+      document.getElementById("blok_wyswietlone_zadanie").style.display = "none"
+
+      let stats = document.getElementById("stats")
+      if(modeOfTime == "timeMode"){
+        stats.innerText = `W trybie czasowym zdobyłeś: ${points} punktów.` 
+      }
+      if(modeOfTime == "defaultMode"){
+        stats.innerText = `W trybie standardowym zdobyłeś ${points} punktów, w czasie ${convertedTime}`
+      }
+      if(modeOfTime == "reset"){
+        stats.innerText = `Zatrzymałeś grę i zdobyłeś: ${points} punktów`
+      }
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+body{
+  width: 100%;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#mainContainer{
+  width: 80%;
+  height: 80vh;
+  background-color: beige;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+
+.mathType{
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: rgb(213, 213, 192);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.mathType h2{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.mathType p{
+  font-size: 1.3rem;
+}
+
+.active{
+  border: 1px solid black;
+  box-shadow: 0px 0px 8px gold;
+}
+
+.inactive{
+  border: none;
+  box-shadow: none;
+}
+
+#excerciseContainer{
+  display: none;
+  width: 80%;
+  height: 70vh;
+  background-color: beige;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+.excerciseDefaultText{
+  padding-top: 10vh;
+  font-size: 2.5rem;
+}
+#excercise{
+  font-size: 4rem;
+}
+
+#excerciseContainer label{
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+#excerciseContainer input{
+  padding: 10px 10px;
+  font-size: 2rem;
+  width: 13%;
+}
+
+#statsContainer{
+  width: 60%;
+  display: flex;
+  justify-self: center;
+  justify-content: space-around;
+  flex-direction: row;
+  padding-top: 4vh;
+}
+#statsContainer h2{
+  font-size: 1.8rem;
+  margin: 0 15px;
+  padding-top: 0;
+}
+
+
+#buttonsArea{
+  width: 80%;
+  background-color: beige;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  height: 6vh;
+  align-items: center;
+}
+
+#buttonsArea button{
+  margin-right: 3%;
+  margin-left: 3%;
+  height: 4vh;
+  width: 8%;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: rgb(213, 213, 192);
+}
+
+#stopGameStats{
+  height: 4vh;
+  background-color: beige;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  text-align: center;
+}

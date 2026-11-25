@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styl.css">
+  <title>dzialania</title>
+</head>
+<body>
+  <div id="mainContainer">
+    <div class="mathType active" id="addition">
+      <h2>Dodawanie</h2>
+      <p>Trudność:</p>
+      <select name="additionDifficulty" id="additionDifficulty">
+        <option value="easy">Łatwe</option>
+        <option value="normal" selected>Normalne</option>
+        <option value="medium" >Średnie</option>
+        <option value="hard">Trudne</option>
+        <option value="veryHard">Bardzo Trudne</option>
+      </select>
+    </div>
+    <div class="mathType active" id="subtraction">
+      <h2>Odejmowanie</h2>
+      <p>Trudność:</p>
+      <select name="subtractionDifficulty" id="subtractionDifficulty">
+        <option value="easy">Łatwe</option>
+        <option value="normal" selected>Normalne</option>
+        <option value="medium" >Średnie</option>
+        <option value="hard">Trudne</option>
+        <option value="veryHard">Bardzo Trudne</option>
+      </select>
+    </div>
+    <div class="mathType active" id="multiplication">
+      <h2>Mnożenie</h2>
+      <p>Trudność:</p>
+      <select name="multiplicationDifficulty" id="multiplicationDifficulty">
+        <option value="easy">Łatwe</option>
+        <option value="normal" selected>Normalne</option>
+        <option value="medium" >Średnie</option>
+        <option value="hard">Trudne</option>
+        <option value="veryHard">Bardzo Trudne</option>
+      </select>
+    </div>
+    <div class="mathType active" id="division">
+      <h2>Dzielenie</h2>
+      <p>Trudność:</p>
+      <select name="divisionDifficulty" id="divisionDifficulty">
+        <option value="easy">Łatwe</option>
+        <option value="normal" selected>Normalne</option>
+        <option value="medium" >Średnie</option>
+        <option value="hard">Trudne</option>
+        <option value="veryHard">Bardzo Trudne</option>
+      </select>
+    </div>
+  </div>
+  <div id="excerciseContainer">
+    <h1>Powodzenia!</h1>
+    <h2 class="excerciseDefaultText">Twoje działanie:</h2>
+    <h2 id="excercise" >18 + 12</h2>
+    <label for="answer">Twoja odpowiedź:</label>
+    <input type="number" name="answer" id="answer"><br>
+    <div id="statsContainer">
+      <h2 id="pointsText">Punkty: </h2>
+      <h2 id="timeText">Czas: </h2>
+    </div>
+  </div>
+  <div id="buttonsArea">
+    <label for="timeMode">Tryb Czasowy</label>
+    <input type="checkbox" name="timeMode" id="timeMode">
+    <button onclick="StartGame()">Start</button>
+    <button onclick="StopGame('resetMode')">Stop</button>
+    <label for="negativeMode">Liczby ujemne</label>
+    <input type="checkbox" name="negativeMode" id="negativeMode">
+  </div>
+  <h2 id="stopGameStats"></h2>
+
+  <script>
+    document.body.addEventListener("click", (event) => {
+      if (event.target.classList.contains("active")) {
+        event.target.classList.remove("active");
+        event.target.classList.add("inactive");
+      }
+      else if(event.target.classList.contains("inactive")) {
+        event.target.classList.remove("inactive");
+        event.target.classList.add("active");
+      }
+    });
+
+    let timeModeInterval, defaultModeInterval, points, convertedTime;
+
+    function StartGame(){
+      let operationTypeChosen = [] ;
+
+      Array.from(document.getElementsByClassName("active")).forEach((element) =>{
+        if (element.id === "addition") operationTypeChosen.push("addition");
+        else if (element.id === "subtraction") operationTypeChosen.push("subtraction");
+        else if (element.id === "multiplication") operationTypeChosen.push("multiplication");
+        else if (element.id === "division") operationTypeChosen.push("division");
+      })
+      if(operationTypeChosen.length == 0) {
+        alert("Wybierz chociaż jedną kategorię!");
+        return
+      }
+      document.getElementById("mainContainer").style.display = "none";
+      document.getElementById("excerciseContainer").style.display = "block";
+      document.getElementById("stopGameStats").innerText = ""
+      document.getElementById("answer").focus();
+      
+      
+      let firstNumber, secondNumber, result, time;
+      
+      clearInterval(timeModeInterval);
+      clearInterval(defaultModeInterval);
+      getResult();
+      points = 0
+      
+
+      function getResult(){
+        let drawOperationType = operationTypeChosen[Math.floor(Math.random()*operationTypeChosen.length)] 
+        console.log(drawOperationType)
+        let difficulty, operation, range;
+        let negativeMode = document.getElementById("negativeMode").checked;
+
+        const allOperations = {
+          '+': (a, b) => a + b,
+          '-': (a, b) => a - b,
+          '*': (a, b) => a * b,
+          '/': (a, b) => a / b,
+        };
+
+        switch (drawOperationType){
+          case "addition": 
+            difficulty = document.getElementById("additionDifficulty").value;
+            operation = "+"
+            operationText = "+"
+            break;
+          case "subtraction": 
+            difficulty = document.getElementById("subtractionDifficulty").value;
+            operation = "-"
+            operationText = "-"
+            break;
+          case "multiplication": 
+            difficulty = document.getElementById("multiplicationDifficulty").value;
+            operation = "*"
+            operationText = "×"
+            break;
+          case "division": 
+            difficulty = document.getElementById("divisionDifficulty").value;
+            operation = "/"
+            operationText = ":"
+            break;
+          }
+          console.log(difficulty)
+
+        switch (difficulty){
+          case "easy":
+            range = 10;
+            if (operation == "*") range = 10;
+            if (operation == "/") range = 50;
+            break;
+          case "normal":
+            range = 50;
+            if (operation == "*") range = 10;
+            if (operation == "/") range = 100;
+            break;
+          case "medium":
+            range = 100;
+            if (operation == "*") range = 50;
+            if (operation == "/") range = 200;
+            break;
+          case "hard":
+            if (operation == "+") range = 1000;
+            if (operation == "-") range = 500;
+            if (operation == "*") range = 50;
+            if (operation == "/") range = 400;
+            break;
+          case "veryHard":
+            if (operation == "+") range = 10000;
+            if (operation == "-") range = 5000;
+            if (operation == "*") range = 100;
+            if (operation == "/") range = 750;
+            break;
+        }
+
+
+        function getNumbers(range){
+          document.getElementById("answer").value = "";
+          let number; 
+          if (!negativeMode) number = Math.floor(Math.random() * (range + 1));
+          else number = Math.floor(Math.random() * (2 * range + 1) - range);
+          return number;
+        }
+        firstNumber = getNumbers(range)
+        secondNumber = getNumbers(range)
+
+        // Validation of operations:
+        //addition
+
+        // subtraction
+        if(operation == "-" && !negativeMode){
+          if (difficulty)
+          while (firstNumber < secondNumber) {
+            firstNumber = getNumbers(range)
+            secondNumber = getNumbers(range)
+          }
+        }
+        // multiplication
+        if(operation == "*"){
+          do{
+            firstNumber = getNumbers(range)
+            secondNumber = getNumbers(range)
+          }
+          while (
+            (difficulty == "easy" && Math.abs(firstNumber * secondNumber) >50 ) ||
+            (difficulty == "normal" && Math.abs(firstNumber * secondNumber) < 20 ) ||
+            (difficulty == "medium" && (Math.abs(firstNumber * secondNumber) > 1000 || (firstNumber * secondNumber) < 100)) ||
+            (difficulty == "hard" &&  Math.abs(firstNumber * secondNumber) < 1000) ||
+            (difficulty == "veryHard" && Math.abs(firstNumber * secondNumber) < 2000 )
+          )
+        }
+
+        // division
+        if(operation == "/"){
+          do{
+            firstNumber = getNumbers(range)
+            secondNumber = getNumbers(range)
+          }
+          while (
+            firstNumber == 0 ||
+            secondNumber == 0 ||
+            firstNumber % secondNumber != 0 || 
+            (difficulty=="normal" && (firstNumber < 11 || secondNumber >50 || secondNumber < 2)) ||
+            (difficulty=="medium" && (firstNumber < 100 || secondNumber >100 || secondNumber < 2)) ||
+            (difficulty=="hard" && (firstNumber < 200 || secondNumber >200 || secondNumber < 4)) ||
+            (difficulty=="veryHard" && (firstNumber < 400 || secondNumber >375 || secondNumber < 4))
+          )
+        }
+        
+        result = allOperations[operation](firstNumber, secondNumber)
+        console.log(firstNumber, operation, secondNumber, "=",result)
+
+        let firstNumberText = firstNumber
+        let secondNumberText = secondNumber
+        if (secondNumber < 0 ) secondNumberText = `(${secondNumber})`
+        
+        let excercise = `${firstNumberText} ${operationText} ${secondNumberText}`
+        document.getElementById("excercise").innerText = excercise
+      }
+
+      let timeMode = document.getElementById("timeMode").checked
+      let pointsText = document.getElementById("pointsText")
+      let timeTextContainer = document.getElementById("timeText")
+      
+      if (!timeMode){
+        pointsText.innerText = `Masz 0/10 punktów`;
+        time = 0;
+        updateDefaultMode()
+        defaultModeInterval = setInterval(updateDefaultMode, 1000)
+        
+        function updateDefaultMode(){
+          let minutes = Math.floor(time/60);
+          let seconds = time % 60
+          convertedTime = `${minutes}:${seconds}`
+          timeText = `Twój czas: ${convertedTime}`
+          time++
+          timeTextContainer.innerText = timeText
+        }
+      }
+      
+      if (timeMode){
+        pointsText.innerText = `Twoje punkty: 0`;
+        time = 150;
+        updateTimeMode()
+        timeModeInterval = setInterval(updateTimeMode, 1000);
+
+        function updateTimeMode(){
+          let minutes = Math.floor(time/60);
+          let seconds = time % 60
+          convertedTime = `${minutes}:${seconds}`
+          timeText = `Pozostało: ${convertedTime}`
+          time--
+          timeTextContainer.innerText = timeText
+        }
+      }
+
+      document.removeEventListener("keyup", checkAnswer)
+      document.addEventListener("keyup", checkAnswer)
+      function checkAnswer(){
+        let answer = document.getElementById("answer").value
+        if (answer == result){
+          points++
+          if(!timeMode){
+            pointsText.innerText = `Masz ${points}/10 punktów`
+            if (points == 10){
+              StopGame('defaultMode')
+            }
+          }
+          if (timeMode){
+            pointsText.innerText = `Twoje punkty: ${points}`
+            if (time==0){
+              stopGame('timeMode')
+            }
+          }
+          getResult();
+        }
+      }
+
+    }
+
+    function StopGame(gameMode){
+      clearInterval(timeModeInterval);
+      clearInterval(defaultModeInterval);
+      document.getElementById("mainContainer").style.display = "grid";
+      document.getElementById("excerciseContainer").style.display = "none";
+      let stopGameStats = document.getElementById("stopGameStats")
+      console.log(points, convertedTime)
+
+      if(gameMode == "timeMode"){
+        stopGameStats.innerText = `W trybie czasowym zdobyłeś ${points} punktów.` 
+      }
+      if(gameMode == "defaultMode"){
+        stopGameStats.innerText = `W trybie standardowym zdobyłeś ${points} punktów, w czasie ${convertedTime}`
+      }
+      if(gameMode == "resetMode"){
+        stopGameStats.innerText = `Zatrzymałeś grę i zdobyłeś ${points} punktów`
+      }
+      
+
+    }
+  </script>
+</body>
+</html>
